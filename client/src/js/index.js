@@ -31,3 +31,7 @@ if ('serviceWorker' in navigator) {
 } else {
   console.error('Service workers are not supported in this browser.');
 }
+
+if (window.matchMedia('(display-mode: standalone)').matches) {
+    document.getElementById('buttonInstall').classList.add('hidden');
+}

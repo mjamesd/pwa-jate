@@ -6,17 +6,16 @@ const { ExpirationPlugin } = require('workbox-expiration');
 const { precacheAndRoute } = require('workbox-precaching/precacheAndRoute');
 
 precacheAndRoute(self.__WB_MANIFEST);
+const maxAgeSeconds = 30 * 24 * 60 * 60; // 30 days * 24 hours * 60 minutes * 60 seconds
+const maxEntries = 60;
 
-// cache the main page for 30 days
+// cache the main page
+const pageMatchCallback = ({ request }) => request.mode === 'navigate';
 const pageCache = new CacheFirst({
     cacheName: 'jate-page-cache',
     plugins: [
         new CacheableResponsePlugin({
             statuses: [0, 200],
-        }),
-        new ExpirationPlugin({
-            maxEntries: 2, // could be `/index.html` or `/`, see urls below
-            maxAgeSeconds: 30 * 24 * 60 * 60,
         }),
     ],
 });
@@ -24,10 +23,27 @@ warmStrategyCache({
     urls: ['/index.html', '/'],
     strategy: pageCache,
 });
-registerRoute(({ request }) => request.mode === 'navigate', pageCache);
+registerRoute(pageMatchCallback, pageCache);
+
+// cache the images for 30 days
+const imgMatchCallback = ({ request }) => request.destination === 'image';
+const imgCache = new CacheFirst({
+    cacheName: 'jate-image-cache',
+    plugins: [
+        new CacheableResponsePlugin({
+            statuses: [0, 200],
+        }),
+        new ExpirationPlugin({
+            maxEntries,
+            maxAgeSeconds,
+        }),
+    ],
+});
+registerRoute(imgMatchCallback, imgCache);
 
 
-// cache images ('image'), CSS ('style'), and JS ('script') files for 30 days
+// cache CSS ('style'), and JS ('script') files for 30 days
+const assestMatchCallback = ({ request }) => ['style', 'script', 'worker'].includes(request.destination);
 const assetCache = new StaleWhileRevalidate({
     cacheName: 'jate-asset-cache',
     plugins: [
@@ -35,9 +51,9 @@ const assetCache = new StaleWhileRevalidate({
             statuses: [0, 200],
         }),
         new ExpirationPlugin({
-            maxEntries: 50,
-            maxAgeSeconds: 30 * 24 * 60 * 60,
+            maxEntries,
+            maxAgeSeconds,
         }),
     ],
-})
-registerRoute(({ request }) => ['image', 'style', 'script', 'worker'].includes(request.destination), assetCache);
+});
+registerRoute(assestMatchCallback, assetCache);
