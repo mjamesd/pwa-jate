@@ -55,7 +55,7 @@ To start using JATE-PWA, first clone [the repo](https://github.com/mjamesd/pwa-j
 
 ## Deployed
 
-I have deployed this app live at my custom domain, [https://jate.markdrummond.me](https://jate.markdrummond.me/), through Heroku.
+I have deployed this app live at my custom domain, [jate.markdrummond.me](http://jate.markdrummond.me/), through Heroku.
 
 ## License
 
