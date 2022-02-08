@@ -6,7 +6,7 @@
 ## Description
 This is a single-page application (SPA) text editor built by Trilogy Education Services, LLC/U2, Inc., using [CodeMirror](https://codemirror.net/). In it, I demonstrate modern web technologies known as Progressive Web App functionality: allowing for caching, content fallback, offline functionality, and installing an app as a stand-alone app on the user's computer.
 
-I use [Express.Js](https://www.npmjs.com/package/express), several [Webpack](https://www.npmjs.com/package/webpack) packages, [Babel](https://www.npmjs.com/package/@babel/core), and [Idb](https://www.npmjs.com/package/idb). I deployed this full-stack application to Heroku where it is now [live](#installation-and-usage).
+I use [Express.Js](https://www.npmjs.com/package/express), several [Webpack](https://www.npmjs.com/package/webpack) packages, [Babel](https://www.npmjs.com/package/@babel/core), and [Idb](https://www.npmjs.com/package/idb). I deployed this full-stack application to Heroku where it is now [live](#deployed).
 
 ## User Story
 
@@ -55,7 +55,7 @@ To start using JATE-PWA, first clone [the repo](https://github.com/mjamesd/pwa-j
 
 ## Deployed
 
-I have deployed this app live at [https://pwa-jate.herokuapp.com/](https://pwa-jate.herokuapp.com/).
+I have deployed this app live at my custom domain, [https://jate.markdrummond.me](https://jate.markdrummond.me/), through Heroku.
 
 ## License
 
