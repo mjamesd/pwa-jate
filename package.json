@@ -8,7 +8,7 @@
     "start": "npm run install_all && npm run build && npm run start_server",
     "start_server": "cd server && node server.js",
     "server": "cd server nodemon server.js --ignore client",
-    "build": "nmp run start",
+    "build": "npm run start",
     "build_client": "cd client && npm run build && cd ..",
     "install_all": "npm install && npm run install_client && npm run install_server",
     "install_client": "cd client && npm install && cd ..",
