@@ -51,11 +51,13 @@ THEN I should have proper build scripts for a webpack application
 
 ## Installation and Usage
 
-To start using JATE-PWA, first clone [the repo](https://github.com/mjamesd/pwa-jate) to your server. Then run `npm start` to install all the dependent packages, build the files for the `dist` directory, and launch the server. Use your browser to access the website at [localhost](http://localhost:3000)
+To start using JATE-PWA, first clone [the repo](https://github.com/mjamesd/pwa-jate) to your server. Run `npm run build` and then run `npm run start` to install all the dependent packages, build the files for the `dist` directory, and launch the server. Use your browser to access the website at [localhost](http://localhost:3000)
+
+If you are deploying to Heroku, first set the Config Var `NPM_CONFIG_PRODUCTION` to `false`. Then deploy the app.
 
 ## Deployed
 
-I have deployed this app live at [https://pwa-jate.herokuapp.com/](https://pwa-jate.herokuapp.com/).
+I have deployed this app live at [Notepad.MarkDrummond.Me](https://notepad.markdrummond.me).
 
 ## License
 
