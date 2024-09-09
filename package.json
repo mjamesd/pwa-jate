@@ -5,13 +5,11 @@
   "main": "server.js",
   "scripts": {
     "start:dev": "concurrently \"cd server && npm run server\" \"cd client && npm run dev\"",
-    "start": "npm run install_all && npm run build_client && npm run start_server",
-    "start_server": "cd server && node server.js",
+    "start": "cd server && node server.js",
     "server": "cd server nodemon server.js --ignore client",
-    "build": "npm run start",
-    "build_client": "cd client && npm run build && cd ..",
+    "build": "npm run install_all && npm run start",
     "install_all": "npm install && npm run install_client && npm run install_server",
-    "install_client": "cd client && npm install && cd ..",
+    "install_client": "cd client && npm install && npm run build && cd ..",
     "install_server": "cd server && npm install && cd ..",
     "client": "cd client && npm start"
   },
