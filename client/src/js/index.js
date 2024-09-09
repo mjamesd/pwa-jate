@@ -33,5 +33,6 @@ if ('serviceWorker' in navigator) {
 }
 
 if (window.matchMedia('(display-mode: standalone)').matches) {
+    console.log('Hide the install button');
     document.getElementById('buttonInstall').classList.add('hidden');
 }
